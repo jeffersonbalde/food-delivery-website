@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div>
       <Header />
-      <main className="pt-16">
+      <main className="pt-16 min-h-[calc(100vh)] bg-slate-100">
         <Outlet />
       </main>
     </div>
