@@ -1,7 +1,9 @@
 import { CiUser } from "react-icons/ci";
+import loginSignupImage from "../assets/login-animation.gif";
 import { BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ImagetoBase64 } from "../utility/ImagetoBase64";
 
 function Signup() {
   const navigate = useNavigate();
@@ -13,6 +15,7 @@ function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
+    image: "",
   });
 
 
@@ -34,6 +37,18 @@ function Signup() {
     });
   };
 
+  const handleUploadProfileImage = async(e)=>{
+    const data = await ImagetoBase64(e.target.files[0])
+    console.log(data)
+
+    setData((preve)=>{
+        return{
+          ...preve,
+          image : data
+        } 
+    })
+  }
+
   const handleSubmit = (e) =>  {
     e.preventDefault()
     const {firstName, email, password, confirmPassword} = data;
@@ -52,8 +67,15 @@ function Signup() {
   return (
     <div className="p-3 md:p-4">
       <div className="w-full max-w-sm bg-white m-auto flex flex-col p-4 ">
-        <div className="w-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto flex justify-center">
-          <CiUser className="text-7xl"/>
+        <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto relative">
+          <img src={data.image ? data.image :  loginSignupImage} className="w-full h-full" />
+
+          <label htmlFor="profileImage">
+            <div className="absolute bottom-0 h-1/3 bg-slate-500 w-full text-center cursor-pointer bg-opacity-50">
+              <p className="text-sm p-1 text-white">Upload</p>
+            </div>
+            <input type="file" id="profileImage" accept="image/" className="hidden" onChange={handleUploadProfileImage}/>
+          </label>
         </div>
 
         <form className="w-full py-3 flex flex-col" onSubmit={handleSubmit}>

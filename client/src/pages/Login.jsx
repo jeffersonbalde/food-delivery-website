@@ -26,7 +26,7 @@ export default function Login() {
         [name]: value,
       };
     });
-  };
+  };  
 
   const handleSubmit = (e) =>  {
     e.preventDefault()
@@ -40,8 +40,8 @@ export default function Login() {
   return (
     <div className="p-3 md:p-4">
       <div className="w-full max-w-sm bg-white m-auto flex flex-col p-4 ">
-        <div className="w-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto flex justify-center">
-          <CiUser className="text-7xl"/>
+        <div className="w-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto">
+          <CiUser className="text-7xl w-full"/>
         </div>
 
         <form className="w-full py-3 flex flex-col" onSubmit={handleSubmit}>
