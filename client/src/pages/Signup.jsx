@@ -1,9 +1,10 @@
 import { CiUser } from "react-icons/ci";
 import { BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [data, setData] = useState({
@@ -14,7 +15,6 @@ function Signup() {
     confirmPassword: "",
   });
 
-  console.log(data)
 
   const handleShowPassword = () => {
     setShowPassword((prevState) => !prevState);
@@ -36,6 +36,17 @@ function Signup() {
 
   const handleSubmit = (e) =>  {
     e.preventDefault()
+    const {firstName, email, password, confirmPassword} = data;
+    if (firstName && email && password && confirmPassword) {
+      if(password === confirmPassword) {
+        alert("successfull")
+        navigate("/login")
+      }else {
+        alert("incorrect")
+      }
+    }else{
+      alert("required")
+    }
   }
 
   return (
@@ -76,12 +87,12 @@ function Signup() {
             onChange={handleOnChange}
           />
 
-          <label htmlFor="confirmPassword">Password: </label>
+          <label htmlFor="password">Password: </label>
           <div className="flex px-2 py-1 bg-slate-200 rounded mt-1 mb-2 outline-none">
             <input 
               type={showPassword ? "text" : "password"}
-              name="confirmPassword" 
-              id="confirmPassword" 
+              name="password" 
+              id="password" 
               className="w-full bg-slate-200 border-none outline-none"
               value={data.password}
               onChange={handleOnChange}
@@ -94,12 +105,12 @@ function Signup() {
             </span>
           </div>
 
-          <label htmlFor="password">Confirm Password: </label>
+          <label htmlFor="confirmPassword">Confirm Password: </label>
           <div className="flex px-2 py-1 bg-slate-200 rounded mt-1 mb-2 outline-none">
             <input 
               type={showConfirmPassword ? "text" : "password"}
-              name="password" 
-              id="password" 
+              name="confirmPassword" 
+              id="confirmPassword" 
               className="w-full bg-slate-200 border-none outline-none"
               value={data.confirmPassword}
               onChange={handleOnChange}
@@ -124,7 +135,7 @@ function Signup() {
         <p 
           className="text-left text-sm mt-2"
         >
-          Already have account ? <Link to={"login"} className="text-blue-500 underline">Login</Link>
+          Already have account ? <Link to={"/login"} className="text-blue-500 underline">Login</Link>
         </p>
       </div>
     </div>

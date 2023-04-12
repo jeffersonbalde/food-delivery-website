@@ -12,7 +12,7 @@ import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Login from "./pages/login";
+import Login from "./pages/Login";
 import Newproduct from './pages/Newproduct';
 import Signup from './pages/Signup';
 
