@@ -54,11 +54,11 @@ app.post("/signup", async (req, res) => {
         const result = await userModel.findOne({ email: email }).exec();
 
         if (result) {
-            res.send({message: "Email already exist"})
+            res.send({message: "Email already exist", alert: false})
         } else {
             const data = userModel(req.body)
             const save = data.save()
-            res.send({ message: "Successfully sign up"})
+            res.send({ message: "Successfully sign up", alert : true})
         }
     } catch (err) {
         console.log(err); // log any errors to the console
