@@ -46,6 +46,46 @@ app.get("/", (req, res) => {
 //     })
 // })
 
+// api login
+// app.post("/login", async (req, res) => {
+//     console.log(req.body)
+//     const {email} = req.body
+//     userModel.findOne({email : email}, (err,result) => {
+//         if(result) {
+//             console.log(result)
+//             res.send({message: "Login successfully", alert : true})
+//         }
+//     })
+// })
+
+app.post("/login", async (req, res) => {
+    try {
+        console.log(req.body); // log the request body to the console
+        const { email } = req.body; // extract the email from the request body using destructuring
+
+        const result = await userModel.findOne({ email: email }).exec();
+
+        if (result) {
+            const dataSend = {
+                _id: result._id,
+                firstName: result.firstName,
+                lastName: result.lastName,
+                email: result.email,
+                image: result.image,
+              };
+              console.log(dataSend);
+            res.send({message: "Login successfully", alert : true, data: dataSend})
+        }else {
+            res.send({ message: "Email not registered, please sign up", alert : false })
+        }
+
+    } catch (err) {
+        console.log(err); // log any errors to the console
+        res.status(500).send("Server Error"); // send an error response to the client
+    }
+});
+
+// api signup
 app.post("/signup", async (req, res) => {
     try {
         console.log(req.body); // log the request body to the console
