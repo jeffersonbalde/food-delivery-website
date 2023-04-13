@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { loginRedux } from "../redux/userSlice";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +18,6 @@ export default function Login() {
   const navigate = useNavigate();
 
   const userData = useSelector(state => state)
-  console.log(userData.user)
 
   const dispatch = useDispatch()
 
@@ -52,11 +52,14 @@ export default function Login() {
       toast(dataRes.message)
 
       if(dataRes.alert) {
+        dispatch(loginRedux(dataRes))
         setTimeout(() => {
           navigate("/")
         }, 1000)
       }
 
+      console.log(userData)
+      
     }else {
       alert("require")
     }
