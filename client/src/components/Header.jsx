@@ -29,12 +29,12 @@ function Header() {
         <div className="flex items-center h-full justify-between">
 
           <Link to={""}>
-            <div className="h-12 flex items-center md:text-lg font-serif">
-              <h1>Jeff</h1>
+            <div className="h-12 flex items-center md:text-lg font-bold font-sans">
+              <h1 className="text-xl">Jeffer<span className="text-white bg-slate-800 ml-1 py-.1 px-1">shop</span></h1>
             </div>
           </Link>
 
-          <div className="flex items-center gap-4 md:gap-7 font-serif ">
+          <div className="flex items-center gap-4 md:gap-7">
             <nav className="flex gap-4 md:gap-6 text-base md:text-lg">
               <Link to={""} className="hover:text-slate-700">Home</Link>
               <Link to={"menu"} className="hover:text-slate-700">Menu</Link>
@@ -51,8 +51,8 @@ function Header() {
               </div>
               {showMenu && (
                 <div className="absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md text-base flex flex-col">
-                  <Link to={"newproduct"} className="whitespace-nowrap cursor-pointer px-2">New product</Link>
-                  {userData.image ? <p className="cursor-pointer text-white bg-slate-800 px-2" onClick={handleLogout}>Logout</p> : <Link to={"login"} className="whitespace-nowrap cursor-pointer px-2">Login</Link> }
+                  {userData.email === 'jeffersonbalde13@gmail.com' && <Link to={"newproduct"} className="whitespace-nowrap cursor-pointer px-2">New product</Link>}
+                  {userData.image ? <p className="cursor-pointer text-white bg-slate-800 px-2" onClick={handleLogout}>Logout ({userData.firstName}) </p> : <Link to={"login"} className="whitespace-nowrap cursor-pointer px-2">Login </Link> }
                 </div>
               )}
             </div>

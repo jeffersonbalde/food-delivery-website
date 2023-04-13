@@ -87,7 +87,7 @@ function Signup() {
             <div className="absolute bottom-0 h-1/3 bg-slate-500 w-full text-center cursor-pointer bg-opacity-50">
               <p className="text-sm p-1 text-white">Upload</p>
             </div>
-            <input type="file" id="profileImage" accept="image/" className="hidden" onChange={handleUploadProfileImage}/>
+            <input type="file" id="profileImage" accept="image/*" className="hidden" onChange={handleUploadProfileImage}/>
           </label>
         </div>
 
