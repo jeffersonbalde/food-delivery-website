@@ -18,7 +18,6 @@ function Signup() {
     image: "",
   });
 
-
   const handleShowPassword = () => {
     setShowPassword((prevState) => !prevState);
   };
@@ -49,13 +48,23 @@ function Signup() {
     })
   }
 
-  const handleSubmit = (e) =>  {
+  const handleSubmit = async(e) =>  {
     e.preventDefault()
     const {firstName, email, password, confirmPassword} = data;
     if (firstName && email && password && confirmPassword) {
       if(password === confirmPassword) {
-        alert("successfull")
-        navigate("/login")
+        const fetchData = await fetch("http://localhost:8080/signup", {
+          method: "POST",
+          headers: {
+            "content-type" : "application/json" 
+          },
+          body: JSON.stringify(data)
+        })
+
+        const dataRes = await fetchData.json()
+        console.log(dataRes )
+        alert(dataRes.message)
+        // navigate("/login")
       }else {
         alert("incorrect")
       }
