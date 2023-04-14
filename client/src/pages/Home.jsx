@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import HomeCard from "../components/HomeCard"
 import CardFeature from "../components/CardFeature"
+import { GrPrevious, GrNext } from "react-icons/gr";
 
 function Home() {
   const productData = useSelector((state) => state.product.productList)
@@ -9,7 +10,8 @@ function Home() {
   const homeProductCartListVegetables = productData.filter(el => el.category === "vegetable", [])
   console.log(homeProductCartListVegetables)
 
-  // const loadingArray = new Array(4).fill(null);
+  const loadingArray = new Array(4).fill(null);
+  const loadingArrayFeature = new Array(10).fill(null);
 
   return (
     <div className="p-4 md:p-6 mt-1">
@@ -26,13 +28,13 @@ function Home() {
           </div>
           <h2 className="text-4xl md:text-7xl font-bold py-3">The Fasted Delivery in <span>Your Home</span></h2>
           <p className="py-3 text-base max-w-5xl m-auto text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-          {/* <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center">
             <button className="font-bold bg-slate-300 text-slate-700 px-4 py-2 rounded-md hover:bg-slate-400">Order Now</button>
-          </div> */}
+          </div>
         </div>
 
         <div className="md:w-4/5 text-center flex flex-wrap gap-5 p-4 justify-center">
-          {homeProductCartList[0] && homeProductCartList.map(el => {
+          {homeProductCartList[0] ? homeProductCartList.map(el => {
             return (
               <HomeCard
                 key={el._id}
@@ -42,14 +44,29 @@ function Home() {
                 category={el.category}
               />
             )
-          })}
+          })
+          : loadingArray.map((el,index) => {
+            return (
+              <HomeCard 
+                key={index}
+                loading={"Loading..."}
+              />
+            )
+          })
+        }
         </div>
       </div>
 
       <div className="">
-          <h2 className="font-bold text-2xl text-slate-800 ">Fresh Vegetables</h2>
-          <div className="">
-            {homeProductCartListVegetables.map(el => {
+          <div className="flex w-full items-center">  
+              <h2 className="font-bold text-2xl text-slate-800 mb-4">Fresh Vegetables</h2>
+            <div className="ml-auto flex gap-4">
+              <button className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrPrevious /></button>
+              <button className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrNext /></button>
+            </div>
+          </div>
+          <div className="flex gap-5 overflow-scroll scrollbar-none">
+            {homeProductCartListVegetables[0] ? homeProductCartListVegetables.map(el => {
               return (
                 <CardFeature 
                   key={el._id}
@@ -59,7 +76,9 @@ function Home() {
                   image={el.image}
                 />
               )
-            })}
+            })
+            : loadingArrayFeature.map(el => <CardFeature loading="Loading..."/>)
+            }
           </div>
       </div>
     </div>
