@@ -35,9 +35,9 @@ function Header() {
           </Link>
 
           <div className="flex items-center gap-4 md:gap-7">
-            <nav className="flex gap-4 md:gap-6 text-base md:text-lg">
+            <nav className=" gap-4 md:gap-6 text-base md:text-lg hidden md:flex">
               <Link to={""} className="hover:text-slate-700">Home</Link>
-              <Link to={"menu"} className="hover:text-slate-700">Menu</Link>
+              <Link to={"menu/64380e5a3117eade68edec54"} className="hover:text-slate-700">Menu</Link>
               <Link to={"about"} className="hover:text-slate-700">About</Link>
               <Link to={"contact"} className="hover:text-slate-700">Contact</Link>
             </nav>
@@ -50,9 +50,17 @@ function Header() {
                 {userData.image ? <img src={userData.image} alt="user" className="h-full w-full"/> : <CiUser />}
               </div>
               {showMenu && (
-                <div className="absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md text-base flex flex-col">
+                <div className="absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md text-base flex flex-col min-w-[120px] text-center">
                   {userData.email === 'jeffersonbalde13@gmail.com' && <Link to={"newproduct"} className="whitespace-nowrap cursor-pointer px-2">New product</Link>}
                   {userData.image ? <p className="cursor-pointer text-white bg-slate-800 px-2" onClick={handleLogout}>Logout ({userData.firstName}) </p> : <Link to={"login"} className="whitespace-nowrap cursor-pointer px-2">Login </Link> }
+
+                  <nav className="text-base md:text-lg flex flex-col md:hidden">
+                    <Link to={""} className="hover:text-slate-700 px-2 py1">Home</Link>
+                    <Link to={"menu/64380e5a3117eade68edec54"} className="hover:text-slate-700 px-2 py1">Menu</Link>
+                    <Link to={"about"} className="hover:text-slate-700 px-2 py-1">About</Link>
+                    <Link to={"contact"} className="hover:text-slate-700 px-2 py-1">Contact</Link>
+                  </nav>
+                  
                 </div>
               )}
             </div>

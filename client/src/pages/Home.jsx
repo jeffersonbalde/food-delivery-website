@@ -2,7 +2,9 @@ import { useSelector } from "react-redux"
 import HomeCard from "../components/HomeCard"
 import CardFeature from "../components/CardFeature"
 import { GrPrevious, GrNext } from "react-icons/gr";
-import { useRef } from "react";
+
+import { useEffect, useRef, useState } from "react";
+import FilterProduct from "../components/FilterProduct";
 
 function Home() {
   const productData = useSelector((state) => state.product.productList)
@@ -21,6 +23,26 @@ function Home() {
 
   const preveProduct = () => {
     slideProductRef.current.scrollLeft -= 300
+  }
+
+  const categoryList = [...new Set(productData.map(el => el.category))]
+  console.log(categoryList)
+
+  // filter data
+  const [filterBy, setFilterBy] = useState("")
+  const [dataFilter, setDataFilter] = useState([])
+
+  useEffect(() => {
+    setDataFilter(productData)
+  }, [productData])
+
+  const handleFilterProduct = (category) => {
+    const filter = productData.filter(el => el.category.toLowerCase() === category.toLowerCase())
+    setDataFilter(() => {
+      return [
+        ...filter
+      ]
+    })
   }
 
   return (
@@ -68,28 +90,55 @@ function Home() {
       </div>
 
       <div className="">
-          <div className="flex w-full items-center">  
-              <h2 className="font-bold text-2xl text-slate-800 mb-4">Fresh Vegetables</h2>
-            <div className="ml-auto flex gap-4">
-              <button onClick={preveProduct} className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrPrevious /></button>
-              <button onClick={nextProduct} className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrNext /></button>
-            </div>
+        <div className="flex w-full items-center">  
+            <h2 className="font-bold text-2xl text-slate-800 mb-4">Fresh Vegetables</h2>
+          <div className="ml-auto flex gap-4">
+            <button onClick={preveProduct} className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrPrevious /></button>
+            <button onClick={nextProduct} className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrNext /></button>
           </div>
-          <div className="flex gap-5 overflow-scroll scrollbar-none scroll-smooth transition-all" ref={slideProductRef}>
-            {homeProductCartListVegetables[0] ? homeProductCartListVegetables.map(el => {
-              return (
-                <CardFeature 
-                  key={el._id}
-                  name={el.name}
-                  category={el.category}
-                  price={el.price}
-                  image={el.image}
-                />
-              )
-            })
-            : loadingArrayFeature.map(el => <CardFeature loading="Loading..."/>)
-            }
-          </div>
+        </div>
+        <div className="flex gap-5 overflow-scroll scrollbar-none scroll-smooth transition-all" ref={slideProductRef}>
+          {homeProductCartListVegetables[0] ? homeProductCartListVegetables.map(el => {
+            return (
+              <CardFeature 
+                key={el._id}
+                name={el.name}
+                category={el.category}
+                price={el.price}
+                image={el.image}
+              />
+            )
+          })
+          : loadingArrayFeature.map(el => <CardFeature loading="Loading..."/>)
+          }
+        </div>
+      </div>
+      
+      <div className="my-5">
+        <h2 className="font-bold text-2xl text-slate-800 mb-4">Your Product</h2>
+
+        <div className="flex gap-4 justify-center overflow-scroll scrollbar-none">
+          {categoryList[0] && categoryList.map(el => {
+            return (
+              <FilterProduct category={el} onClick={() => handleFilterProduct(el)}/>
+            )
+          })}
+        </div>
+
+        <div className="flex flex-wrap gap-4 justify-center my-4">
+          {dataFilter.map(el => {
+            return (
+              <CardFeature 
+                key={el._id}
+                image={el.image}
+                name={el.name}
+                category={el.category}
+                price={el.price}
+              />
+            )
+          })}
+        </div>
+
       </div>
     </div>
   )
