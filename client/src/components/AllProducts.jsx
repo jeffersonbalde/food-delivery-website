@@ -16,6 +16,7 @@ function AllProducts({heading}) {
     }, [productData])
   
     const handleFilterProduct = (category) => {
+      setFilterBy(category)
       const filter = productData.filter(el => el.category.toLowerCase() === category.toLowerCase())
       setDataFilter(() => {
         return [
@@ -34,7 +35,12 @@ function AllProducts({heading}) {
               {categoryList[0] ? (
                 categoryList.map(el => {
                   return (
-                  <FilterProduct category={el} onClick={() => handleFilterProduct(el)} key={el}/>
+                    <FilterProduct 
+                      category={el} 
+                      onClick={() => handleFilterProduct(el)} 
+                      key={el}
+                      isActive={el.toLowerCase() === filterBy.toLowerCase()}
+                    />
                   )
               })
               )

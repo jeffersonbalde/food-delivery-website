@@ -45,7 +45,7 @@ function Header() {
             <div className="text-2xl relative cursor-pointer">
               <Link to={"cart"}>
                 <CiShoppingCart />
-                <div className="absolute -top-1 -right-1 text-white bg-black h-4 w-4  rounded-full m-0 p-0 text-sm text-center">{cartItemNumber.length}</div>
+                <div className="absolute -top-1 -right-1 text-white bg-black h-4 w-4  rounded-full m-0 pb-.1  text-sm text-center flex justify-center items-center">{cartItemNumber.length  }</div>
               </Link>
             </div>
             <div className="text-2xl" onClick={handleShowMenu}>

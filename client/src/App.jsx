@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useEffect } from "react";
 import { setDataProduct } from "./redux/productSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Footer from "./components/Footer";
 
 export default function App() {
   const dispatch = useDispatch()
@@ -13,7 +14,6 @@ export default function App() {
     (async () => {
       const res = await fetch("http://localhost:8080/product")
       const resData = await res.json()
-      console.log(resData)
       dispatch(setDataProduct(resData))
     })()
   }, [])
@@ -26,6 +26,10 @@ export default function App() {
         <main className="pt-16 bg-slate-100 min-h-[calc(100vh)]">
           <Outlet />
         </main>
+
+        <footer>
+          <Footer />
+        </footer>
       </div>
     </>
   )

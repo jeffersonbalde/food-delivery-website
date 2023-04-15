@@ -43,7 +43,7 @@ function CartProduct({id, name, image, category, qty, total, price}) {
 
                     <div className="flex items-center gap-2 font-bold text-slate-600">
                         <p>Total: </p>
-                        <p>{total}</p>
+                        <p><span className="text-blue-900">₱</span>{total}</p>
                     </div>
 
                 </div>

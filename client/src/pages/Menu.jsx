@@ -10,7 +10,6 @@ function Menu() {
   const productData = useSelector(state => state.product.productList)
 
   const productDisplay = productData.filter(el => el._id === filterby)[0]
-  console.log(productDisplay)
 
   const handleAddCartProduct = (e) => {
     dispatch(addCartItem(productDisplay))

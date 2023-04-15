@@ -26,10 +26,10 @@ function Home() {
   }
 
   return (
-    <div className="p-4 md:p-6 mt-1">
+    <div className="p-3 md:p-6 mt-1">
       <div className="md:flex justify-center items-center flex-col gap-4 py-2">
 
-        <div className="md:w-4/5">
+        <div className="w-30 md:w-4/5">
           <div className="flex gap-3 bg-slate-300 w-36 px-2 items-center rounded-full m-auto">
             <p className="text-sm font-medium text-slate-700">Bike Delivery</p>
             <img 
@@ -38,8 +38,8 @@ function Home() {
               className="h-7"
             />
           </div>
-          <h2 className="text-4xl md:text-7xl font-bold py-3">The Fasted Delivery in <span>Your Home</span></h2>
-          <p className="py-3 text-base max-w-5xl m-auto text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+          <h2 className="text-4xl md:text-7xl font-bold py-3 text-center ">The Grocery Express <br /><span className="text-slate-500">Order anytime, anywhere!</span></h2>
+          <p className="py-3 text-base max-w-5xl m-auto text-center">Our food delivery app offers a wide range of products, including fresh fruits, vegetables, ice cream, sandwiches, and desserts. With just a few taps, users can conveniently order their groceries and have them delivered right to their doorstep. Whether you're at home or on the go, The Grocery Express is here to make your life easier.</p>
           <div className="flex items-center justify-center">
             <button className="font-bold bg-slate-300 text-slate-700 px-4 py-2 rounded-md hover:bg-slate-400">Order Now</button>
           </div>
@@ -72,7 +72,7 @@ function Home() {
 
       <div className="">
         <div className="flex w-full items-center">  
-            <h2 className="font-bold text-2xl text-slate-800 mb-4">Fresh Vegetables</h2>
+            <h2 className="font-bold text-2xl text-slate-800 mb-4">Vegetables</h2>
           <div className="ml-auto flex gap-4">
             <button onClick={preveProduct} className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrPrevious /></button>
             <button onClick={nextProduct} className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrNext /></button>
@@ -95,7 +95,7 @@ function Home() {
           }
         </div>
       </div>
-      <AllProducts heading="Your Products"/>
+      <AllProducts heading="Menu"/>
     </div>
   )
 }
