@@ -11,7 +11,6 @@ function Header() {
   const [showMenu, setShowMenu] = useState(false);
   
   const userData = useSelector((state) => state.user)
-  console.log(userData)
   const dispatch = useDispatch()
   
   const handleShowMenu = () => {
@@ -22,6 +21,8 @@ function Header() {
     dispatch(logoutRedux())
     toast("Logout successfully")
   }
+
+  const cartItemNumber = useSelector((state)=>state.product.cartItem)
 
   return (
     <header className="fixed w-full h-16 shadow-md px-2 md:px-4 z-50 bg-white">
@@ -42,8 +43,10 @@ function Header() {
               <Link to={"contact"} className="hover:text-slate-700">Contact</Link>
             </nav>
             <div className="text-2xl relative cursor-pointer">
-              <CiShoppingCart />
-              <div className="absolute -top-1 -right-1 text-white bg-black h-4 w-4  rounded-full m-0 p-0 text-sm text-center">0</div>
+              <Link to={"cart"}>
+                <CiShoppingCart />
+                <div className="absolute -top-1 -right-1 text-white bg-black h-4 w-4  rounded-full m-0 p-0 text-sm text-center">{cartItemNumber.length}</div>
+              </Link>
             </div>
             <div className="text-2xl" onClick={handleShowMenu}>
               <div className="cursor-pointer w-7 h-7 rounded-full overflow-hidden drop-shadow-md">

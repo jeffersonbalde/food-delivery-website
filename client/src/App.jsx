@@ -18,8 +18,6 @@ export default function App() {
     })()
   }, [])
 
-  console.log(productData)
-
   return (
     <>
       <Toaster />

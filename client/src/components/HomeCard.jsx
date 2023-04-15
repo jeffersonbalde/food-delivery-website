@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 
+
 function HomeCard({ name, image, category, price, loading, id}) {
   return (
     <div className="bg-white shadow-md p-2 rounded min-w-[150px] min-h-[150px]">
