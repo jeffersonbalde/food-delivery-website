@@ -32,7 +32,7 @@ const userSchema = mongoose.Schema({
 const userModel = mongoose.model("user", userSchema)
 
 // Api
-app.get("https://mern-food-ordering-2yzx26cjb-jeffersonbalde.vercel.app/", (req, res) => {
+app.get("/", (req, res) => {
     res.send("server is running")
 })
 
