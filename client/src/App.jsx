@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch("https://mern-food-ordering-app-e7e3.vercel.app/product")
+      const res = await fetch(`${VITE_API_BASE_URL}/product`)
       const resData = await res.json()
       dispatch(setDataProduct(resData))
     })()
