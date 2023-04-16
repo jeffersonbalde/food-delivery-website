@@ -126,7 +126,7 @@ app.post("/uploadProduct", async(req, res) => {
 })
 
 // get products
-app.get("/product", async (req, res) => {
+app.get("/api/product", async (req, res) => {
     const data = await productModel.find({})
     res.send(JSON.stringify(data))
 })
