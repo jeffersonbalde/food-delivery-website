@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/product`)
+      const res = await fetch("http://localhost:8080/product")
       const resData = await res.json()
       dispatch(setDataProduct(resData))
     })()

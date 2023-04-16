@@ -39,7 +39,7 @@ export default function Login() {
     e.preventDefault()
     const {email, password} = data;
     if (email && password) {
-      const fetchData = await fetch(`${VITE_API_BASE_URL}/login`, {
+      const fetchData = await fetch("http://localhost:8080/login", {
         method: "POST",
         headers: {
           "content-type" : "application/json" 
