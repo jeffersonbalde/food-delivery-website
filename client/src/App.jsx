@@ -21,7 +21,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/product`);
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/product`);
         const resData = await res.json();
         dispatch(setDataProduct(resData));
       } catch (error) {
