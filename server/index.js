@@ -11,7 +11,7 @@ app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
   });
-  
+
 app.use(cors());
 
 app.use(express.json({limit: "10mb"}));
@@ -140,6 +140,10 @@ app.get("/product", async (req, res) => {
     res.send(JSON.stringify(data))
 })
 
-app.listen(PORT, () => {
-    console.log(`server is running at ${PORT}`)
+// app.listen(PORT, () => {
+//     console.log(`server is running at ${PORT}`)
+// })
+
+app.get("/test", (req, res) => {
+    res.send("test working")
 })
