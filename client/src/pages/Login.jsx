@@ -57,8 +57,6 @@ export default function Login() {
           navigate("/")
         }, 1000)
       }
-
-      console.log(userData)
       
     }else {
       alert("require")
