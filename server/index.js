@@ -3,11 +3,11 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 
-app.use(cors());
 const app = express();
+app.use(cors());
 app.use(express.json({limit: "10mb"}));
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT
 
 // MongoDB
 console.log(process.env.MONGODB_URL)
