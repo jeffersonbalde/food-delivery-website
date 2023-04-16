@@ -134,7 +134,3 @@ app.get("/product", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`server is running at ${PORT}`)
 })
-
-app.get("/test", (req, res) => {
-    res.send("test working")
-})
