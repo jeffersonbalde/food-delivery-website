@@ -58,7 +58,7 @@ app.get("/", (req, res) => {
 //     })
 // })
 
-app.post("/api/login", async (req, res) => {
+app.post("/login", async (req, res) => {
     try {
         console.log(req.body); // log the request body to the console
         const { email } = req.body; // extract the email from the request body using destructuring
@@ -86,7 +86,7 @@ app.post("/api/login", async (req, res) => {
 });
 
 // api signup
-app.post("/api/signup", async (req, res) => {
+app.post("/signup", async (req, res) => {
     try {
         console.log(req.body); // log the request body to the console
         const { email } = req.body; // extract the email from the request body using destructuring
@@ -118,7 +118,7 @@ const schemaProduct = mongoose.Schema({
 const productModel = mongoose.model("product", schemaProduct)
 
 // save product api
-app.post("/api/uploadProduct", async(req, res) => {
+app.post("/uploadProduct", async(req, res) => {
     console.log(req.body)
     const data = await productModel(req.body)
     const datasave = await data.save()
@@ -126,7 +126,7 @@ app.post("/api/uploadProduct", async(req, res) => {
 })
 
 // get products
-app.get("/api/product", async (req, res) => {
+app.get("/product", async (req, res) => {
     const data = await productModel.find({})
     res.send(JSON.stringify(data))
 })
@@ -135,6 +135,6 @@ app.listen(PORT, () => {
     console.log(`server is running at ${PORT}`)
 })
 
-app.get("/api/test", (req, res) => {
+app.get("/test", (req, res) => {
     res.send("test working")
 })
