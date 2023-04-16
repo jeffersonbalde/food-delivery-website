@@ -39,7 +39,7 @@ export default function Login() {
     e.preventDefault()
     const {email, password} = data;
     if (email && password) {
-      const fetchData = await fetch("http://localhost:8080/login", {
+      const fetchData = await fetch("https://mern-food-ordering-app-e7e3.vercel.app/login", {
         method: "POST",
         headers: {
           "content-type" : "application/json" 
