@@ -10,13 +10,27 @@ export default function App() {
   const dispatch = useDispatch()
   const productData = useSelector((state) => state.product)
 
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/product`)
+  //     const resData = await res.json()
+  //     dispatch(setDataProduct(resData))
+  //   })()
+  // }, [])
+
   useEffect(() => {
-    (async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/product`)
-      const resData = await res.json()
-      dispatch(setDataProduct(resData))
-    })()
-  }, [])
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/product`);
+        const resData = await res.json();
+        dispatch(setDataProduct(resData));
+      } catch (error) {
+        toast.error('Unable to fetch product data');
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
