@@ -81,7 +81,7 @@ function Newproduct() {
         <option value={"other"}>select category</option>
           <option value={"fruits"}>Fruits</option>
           <option value={"vegetable"}>Vegetable</option>
-          <option value={"icream"}>Icream</option>
+          <option value={"icream"}>Ice-cream</option>
           <option value={"dosa"}>Dosa</option>
           <option value={"pizza"}>Pizza</option>
           <option value={"rice"}>rice</option>
