@@ -42,6 +42,7 @@ Note that you'll need to replace <your-mongodb-url> with the URL for your MongoD
 ## Technologies Used
 
 - React
+- Redux
 - NodeJS
 - ExpressJS
 - MongoDB
