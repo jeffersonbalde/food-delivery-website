@@ -10,8 +10,6 @@ This food delivery app was created using the MERN stack and allows users to easi
 
 ## How to Run the Project
 
-## How to Run the Project
-
 1. Clone the repository to your local machine.
 2. Navigate to the project directory in your terminal.
 3. Install dependencies by running `npm install`.
