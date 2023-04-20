@@ -31,7 +31,7 @@ function Newproduct() {
     const {name, image, category, price} = data
 
     if(name && image && category && price) {
-      const fetchData = await fetch("http://localhost:8080/uploadProduct", {
+      const fetchData = await fetch(`${import.meta.env.VITE_API_BASE_URL}/uploadProduct`, {
         method: "POST",
         headers : {
           "content-type" : "application/json"
