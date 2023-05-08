@@ -1,4 +1,4 @@
-# Food Ordering App
+# Food Delivery App
 
 ## Description
 
